@@ -6,7 +6,8 @@
   "scripts": {
     "start": "nodemon server.js",
     "test": "nyc --reporter=html --reporter=text mocha ./test",
-    "coverage": "nyc report --reporter=text-lcov | coveralls"
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "check-coverage": "nyc check-coverage --statements 75 --branches 70 --functions 70 --lines 70"
   },
   "author": "D.Bernard",
   "license": "ISC",
