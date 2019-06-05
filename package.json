@@ -5,9 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js",
-    "test": "nyc --reporter=html --reporter=text mocha ./test",
-    "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "check-coverage": "nyc check-coverage --statements 75 --branches 70 --functions 70 --lines 70"
+    "test": "nyc mocha ./test",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "author": "D.Bernard",
   "license": "ISC",
@@ -32,6 +31,12 @@
     "sinon": "^7.3.2"
   },
   "nyc": {
+    "per-file": true,
+    "check-coverage": true,
+    "branches": 10,
+    "lines": 10,
+    "functions": 10,
+    "statements": 10,
     "include": [
       "**/*.js",
       "./*.js"

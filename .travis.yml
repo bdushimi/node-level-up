@@ -9,6 +9,4 @@ install:
 script:
   - npm test
 
-after_success:
-  - npm run coverage
-  - npm run check-coverage
+after_success: npm run coverage
