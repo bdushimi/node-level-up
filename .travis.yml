@@ -10,3 +10,9 @@ script:
   - npm test
 
 after_success: npm run coverage
+
+deploy:
+  provider: heroku
+  api_key: af678bd9-bf95-4bf0-b4ec-00bc39a13ab9
+  app:
+    develop: node-level-up
