@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const http = require('http');
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -19,5 +20,7 @@ app.use((req, res, next) => {
 });
 
 const server = http.createServer(app);
+const host = '0.0.0.0';
+const port = process.env.PORT || 3000;
 
-server.listen(3000, () => console.log('App is listening to 3000'));
+server.listen(port, host, () => console.log('Server has started.....'));
