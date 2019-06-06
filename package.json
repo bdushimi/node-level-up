@@ -32,7 +32,6 @@
   },
   "nyc": {
     "per-file": true,
-    "check-coverage": true,
     "include": [
       "**/*.js",
       "./*.js"
