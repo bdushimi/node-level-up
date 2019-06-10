@@ -1,50 +1,23 @@
 {
-  "name": "basics",
+  "name": "nodejs-complete-guide",
   "version": "1.0.0",
-  "description": "Level up node js",
-  "main": "server.js",
+  "description": "Complete Node.js Guide",
+  "main": "app.js",
   "scripts": {
-    "start": "node server.js",
-    "test": "nyc mocha ./test",
-    "coverage": "nyc report --reporter=text-lcov | coveralls"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js",
+    "start-server": "node app.js"
   },
-  "author": "D.Bernard",
+  "author": "Maximilian Schwarzmüller",
   "license": "ISC",
-  "dependencies": {
-    "body-parser": "^1.19.0",
-    "express": "^4.17.1"
-  },
   "devDependencies": {
-    "chai": "^4.2.0",
-    "chai-http": "^4.3.0",
-    "coveralls": "^3.0.3",
-    "eslint": "^5.16.0",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.17.3",
-    "grunt": "latest",
-    "grunt-mocha": "^1.2.0",
-    "grunt-mocha-istanbul": "^5.0.2",
-    "istanbul": "^0.4.5",
-    "mocha": "^6.1.4",
-    "nodemon": "^1.19.1",
-    "nyc": "^14.1.1",
-    "sinon": "^7.3.2"
+    "nodemon": "^1.18.3"
   },
-  "nyc": {
-    "per-file": true,
-    "include": [
-      "**/*.js",
-      "./*.js"
-    ],
-    "exclude": [
-      "**/node_modules/**",
-      "**/test/**",
-      "**/coverage/**",
-      "Gruntfile.js",
-      ".eslintrc.js"
-    ],
-    "all": true,
-    "sourceMap": true,
-    "instrument": true
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "express-handlebars": "^3.0.0",
+    "pug": "^2.0.3"
   }
 }
