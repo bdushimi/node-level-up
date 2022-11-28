@@ -30,6 +30,6 @@ app.post('/posts/:id/comments', (req, res) => {
     res.status(201).send(commentsByPostId[postId])
 })
 
-app.listen(5000, () => {
-    console.log("comments service listens on port 5000")
+app.listen(5050, () => {
+    console.log("comments service listens on port 5050")
 })
