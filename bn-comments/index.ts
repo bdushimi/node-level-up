@@ -1,14 +1,14 @@
-const express = require('express');
-const bodyParser = require('body-parser')
-const { randomBytes } = require("crypto")
-const cors = require('cors')
+import express from 'express';
+import bodyParser from 'body-parser';
+import { randomBytes } from "crypto";
+import cors from 'cors';
 
 
 const app = express()
 app.use(bodyParser.json())
 app.use(cors())
 
-const commentsByPostId = {}
+const commentsByPostId : any = {}
 
 
 app.get('/posts/:id/comments', (req, res) => {
