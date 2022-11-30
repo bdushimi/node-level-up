@@ -1,19 +1,21 @@
-const express = require('express')
-const { randomBytes } = require('crypto')
-const bodyParser = require('body-parser')
-const cors = require('cors')
+import express from 'express'
+import { randomBytes } from 'crypto'
+import bodyParser from 'body-parser'
+import cors from 'cors'
 
 const app = express()
 app.use(bodyParser.json())
 app.use(cors())
 
-const posts = {}
 
-app.get('/posts', (req, res) => {
+
+const posts : any = {}
+
+app.get('/posts', (_req : any, res: any) => {
     res.send(posts)
 })
 
-app.post('/posts', (req, res) => {
+app.post('/posts', (req : any, res: any) => {
     const id = randomBytes(4).toString("hex")
     const { title } = req.body
     posts[id] = {
