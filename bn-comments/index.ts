@@ -11,12 +11,12 @@ app.use(cors())
 const commentsByPostId : any = {}
 
 
-app.get('/posts/:id/comments', (req, res) => {
+app.get('/posts/:id/comments', (req : any, res: any) => {
         res.send(commentsByPostId[req.params.id] || [])
 })
 
 
-app.post('/posts/:id/comments', (req, res) => {
+app.post('/posts/:id/comments', (req: any, res: any) => {
     const postId = req.params.id
 
     const { content } = req.body
