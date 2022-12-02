@@ -31,7 +31,7 @@ app.post("/events", (req, res) => {
 });
 //@ts-ignore
 app.get("/events", (req, res) => {
-    res.send({ posts });
+    res.send(posts);
 });
 app.listen(7070, () => {
     console.log("listening on port 7070");

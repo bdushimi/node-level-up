@@ -15,16 +15,16 @@ export default function CommentCreate({ postId }) {
 
   return (
     <form onSubmit={onSubmit}>
-      <div class="form-group">
+      <div className="form-group">
         <label>New Comment</label>
         <input
           type="text"
-          class="form-control"
+          className="form-control"
           value={content}
           onChange={(e) => setContent(e.target.value)}
         />
       </div>
-      <button class="btn btn-primary">Submit</button>
+      <button className="btn btn-primary">Submit</button>
     </form>
   );
 }
