@@ -22,9 +22,18 @@ app.post("/events", (req, res) => {
         };
     }
     else if (type === "CommentCreated") {
-        const { id, content, postId } = data;
+        const { id, content, postId, status } = data;
         const tempPost = posts[postId];
-        tempPost.comments.push({ id, content });
+        tempPost.comments.push({ id, content, status });
+    }
+    else if (type === "CommentUpdated") {
+        const { postId, status, id } = data;
+        posts[postId].comments.map((comment) => {
+            if (comment.id === id) {
+                comment.status = status;
+            }
+            return comment;
+        });
     }
     console.log("posts", posts);
     res.send({ status: 'OK' });
@@ -33,6 +42,6 @@ app.post("/events", (req, res) => {
 app.get("/events", (req, res) => {
     res.send(posts);
 });
-app.listen(7070, () => {
-    console.log("listening on port 7070");
+app.listen(4005, () => {
+    console.log("listening on port 4005");
 });

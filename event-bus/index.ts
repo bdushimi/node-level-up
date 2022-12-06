@@ -11,13 +11,16 @@ app.use(cors())
 app.post('/events', (req, res) => {
     const event = req.body
 
-    axios.post('http://localhost:4040/events', {
+    axios.post('http://localhost:4001/events', {
         event
     })
-    axios.post('http://localhost:5050/events', {
+    axios.post('http://localhost:4002/events', {
         event
     })
-    axios.post('http://localhost:7070/events', {
+    axios.post('http://localhost:4005/events', {
+        event
+    })
+    axios.post('http://localhost:4004/events', {
         event
     })
 
@@ -25,6 +28,6 @@ app.post('/events', (req, res) => {
 })
 
 
-app.listen(6060, ()=>{
-    console.log('Listening on 6060 port')
+app.listen(4003, ()=>{
+    console.log('Listening on 4003 port')
 })

@@ -23,7 +23,8 @@ app.post('/posts', async (req : any, res: any) => {
         id, title
     }
 
-    await axios.post('http://localhost:6060/events', {
+    // sends events to the event bus
+    await axios.post('http://localhost:4003/events', {
         type: 'PostCreated',
         data: {
             id,
@@ -39,6 +40,6 @@ app.post('/events', (req, res)=>{
     res.send({})
 })
 
-app.listen(4040, () => {
-    console.log('bn listening on port 4040')
+app.listen(4001, () => {
+    console.log('bn listening on port 4001')
 })
