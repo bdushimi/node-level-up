@@ -7,7 +7,11 @@ export default function PostList() {
   const [posts, setPosts] = useState({});
 
   const fetchPosts = async () => {
-    const res = await axios.get("http://localhost:4005/events");
+    const res = await axios
+      .get("http://localhost:4005/events")
+      .catch((error) => {
+        console.log("Error : ", error.message);
+      });
     setPosts(res.data);
   };
 
@@ -17,13 +21,16 @@ export default function PostList() {
 
   const renderedPosts = Object.values(posts).map((post) => {
     return (
-      <div  key = {post.id} className="card" style={{ width: "30%", marginBottom: "20px" }}>
+      <div
+        key={post.id}
+        className="card"
+        style={{ width: "30%", marginBottom: "20px" }}
+      >
         <div className="card-body">
           <h3>{post.title}</h3>
-          <CommentList comments={post.comments}/>
-          <CommentCreate postId={post.id}/>
+          <CommentList comments={post.comments} />
+          <CommentCreate postId={post.id} />
         </div>
-
       </div>
     );
   });

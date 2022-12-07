@@ -2,16 +2,19 @@ import React, { useState } from "react";
 import axios from "axios";
 
 export default function CommentCreate({ postId }) {
-
   const [content, setContent] = useState("");
 
-  const onSubmit = async(event) => {
-    event.preventDefault()
-    await axios.post(`http://localhost:4002/posts/${postId}/comments`,{
-        content
-    })
-    setContent('')
-  }
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    await axios
+      .post(`http://localhost:4002/posts/${postId}/comments`, {
+        content,
+      })
+      .catch((error) => {
+        console.log("Error : ", error.message);
+      });
+    setContent("");
+  };
 
   return (
     <form onSubmit={onSubmit}>
