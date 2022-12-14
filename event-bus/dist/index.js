@@ -14,26 +14,26 @@ const events = [];
 app.post('/events', (req, res) => {
     const event = req.body;
     events.push(event);
-    axios_1.default.post('http://localhost:4001/events', {
+    axios_1.default.post('http://posts-clusterip-srv:4001/events', {
         event
     }).catch(error => {
         console.log("Error : ", error.message);
     });
-    axios_1.default.post('http://localhost:4002/events', {
-        event
-    }).catch(error => {
-        console.log("Error : ", error.message);
-    });
-    axios_1.default.post('http://localhost:4005/events', {
-        event
-    }).catch(error => {
-        console.log("Error : ", error.message);
-    });
-    axios_1.default.post('http://localhost:4004/events', {
-        event
-    }).catch(error => {
-        console.log("Error : ", error.message);
-    });
+    // axios.post('http://localhost:4002/events', {
+    //     event
+    // }).catch(error=> {
+    //     console.log("Error : ", error.message)
+    // })
+    // axios.post('http://localhost:4005/events', {
+    //     event
+    // }).catch(error=> {
+    //     console.log("Error : ", error.message)
+    // })
+    // axios.post('http://localhost:4004/events', {
+    //     event
+    // }).catch(error=> {
+    //     console.log("Error : ", error.message)
+    // })
     res.send({ status: 'OK' });
 });
 //@ts-ingore

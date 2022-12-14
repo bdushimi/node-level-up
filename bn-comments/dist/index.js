@@ -23,20 +23,24 @@ app.post("/posts/:id/comments", async (req, res) => {
     comments.push({ id: commentId, content: content, status: "pending" });
     commentsByPostId[postId] = comments;
     // sends event to the events bus
-    await axios_1.default.post("http://localhost:4003/events", {
+    await axios_1.default
+        .post("http://event-clusterip-srv:4003/events", {
         type: "CommentCreated",
         data: {
             id: commentId,
             content,
             postId,
-            status: "pending"
+            status: "pending",
         },
+    })
+        .catch((error) => {
+        console.log("Error : ", error.message);
     });
     res.status(201).send(commentsByPostId[postId]);
 });
-app.post('/events', async (req, res) => {
+app.post("/events", async (req, res) => {
     const { type, data } = req.body.event;
-    console.log('Received event', type);
+    console.log("Received event", type);
     if (type === "CommentModerated") {
         commentsByPostId[data.postId].map((comment) => {
             if (comment.id === data.id) {
@@ -44,9 +48,13 @@ app.post('/events', async (req, res) => {
             }
             return comment;
         });
-        await axios_1.default.post("http://localhost:4003/events", {
-            type: 'CommentUpdated',
-            data
+        await axios_1.default
+            .post("http://event-clusterip-srv:4003/events", {
+            type: "CommentUpdated",
+            data,
+        })
+            .catch((error) => {
+            console.log("Error : ", error.message);
         });
     }
     res.send({});

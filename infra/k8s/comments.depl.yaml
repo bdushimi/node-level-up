@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: comments-service-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: comments-service
+  template:
+    metadata:
+      labels:
+        app: comments-service
+    spec:
+      containers:
+        - name: comments-service
+          image: dushberd/comments-service   
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: comments-clusterip-srv
+spec:
+  selector: 
+    app: comments-service 
+  ports:
+    - name: comments-service
+      protocol: TCP
+      port: 4002
+      targetPort: 4002
+
+
+

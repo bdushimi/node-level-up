@@ -48,7 +48,7 @@ app.get("/events", (req, res) => {
 app.listen(4005, async () => {
     console.log("listening on port 4005");
     // Make a request to the event bus to get events that this service might have missed out when it was offline
-    const res = await axios_1.default.get('http://localhost:4003/events');
+    const res = await axios_1.default.get('http://event-clusterip-srv:4003/events');
     for (let event of res.data) {
         console.log('Processing event: ', event.type);
         handleEvent(event);

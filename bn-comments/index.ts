@@ -29,7 +29,7 @@ app.post("/posts/:id/comments", async (req: any, res: any) => {
 
   // sends event to the events bus
   await axios
-    .post("http://localhost:4003/events", {
+    .post("http://event-clusterip-srv:4003/events", {
       type: "CommentCreated",
       data: {
         id: commentId,
@@ -59,7 +59,7 @@ app.post("/events", async (req, res) => {
     });
 
     await axios
-      .post("http://localhost:4003/events", {
+      .post("http://event-clusterip-srv:4003/events", {
         type: "CommentUpdated",
         data,
       })

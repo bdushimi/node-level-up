@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-
-    "dev": "yarn tsc && node ./dist/index.js"
+    "dev": "yarn tsc && node ./dist/index.js",
+    "build": "yarn tsc",
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",

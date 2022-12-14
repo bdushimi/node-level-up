@@ -24,7 +24,7 @@ app.post('/posts', async (req : any, res: any) => {
     }
 
     // sends events to the event bus
-    await axios.post('http://localhost:4003/events', {
+    await axios.post('http://event-clusterip-srv:4003/events', {
         type: 'PostCreated',
         data: {
             id,
@@ -41,5 +41,6 @@ app.post('/events', (req, res)=>{
 })
 
 app.listen(4001, () => {
+    console.log('New APIs')
     console.log('bn listening on port 4001')
 })
