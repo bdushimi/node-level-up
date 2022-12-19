@@ -20,21 +20,21 @@ app.post('/events', (req, res) => {
     }).catch(error=> {
         console.log("Error : ", error.message)
     })
-    // axios.post('http://localhost:4002/events', {
-    //     event
-    // }).catch(error=> {
-    //     console.log("Error : ", error.message)
-    // })
-    // axios.post('http://localhost:4005/events', {
-    //     event
-    // }).catch(error=> {
-    //     console.log("Error : ", error.message)
-    // })
-    // axios.post('http://localhost:4004/events', {
-    //     event
-    // }).catch(error=> {
-    //     console.log("Error : ", error.message)
-    // })
+    axios.post('http://comments-clusterip-srv:4002/events', {
+        event
+    }).catch(error=> {
+        console.log("Error : ", error.message)
+    })
+    axios.post('http://query-clusterip-srv:4005/events', {
+        event
+    }).catch(error=> {
+        console.log("Error : ", error.message)
+    })
+    axios.post('http://moderation-clusterip-srv:4004/events', {
+        event
+    }).catch(error=> {
+        console.log("Error : ", error.message)
+    })
 
     res.send({status: 'OK'})
 })
