@@ -49,7 +49,7 @@ app.post("/events", (req, res) => {
 });
 
 //@ts-ignore
-app.get("/events", (req, res) => {
+app.get("/posts", (req, res) => {
   res.send(posts);
 });
 

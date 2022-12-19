@@ -1,0 +1,58 @@
+apiVersion: skaffold/v2alpha3
+kind: Config
+deploy:
+  kubectl:
+    manifests:
+      - ./infra/k8s/* 
+build:
+  local:
+    push: false
+  artifacts:
+    - image: dushberd/client
+      context: client
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.js'
+            dest: .
+    - image: dushberd/posts-service
+      context: bn-posts
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'dist/*.js'
+            dest: .   
+    - image: dushberd/comments-service
+      context: bn-comments
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'dist/*.js'
+            dest: .
+    - image: dushberd/event-bus
+      context: event-bus
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'dist/*.js'
+            dest: .                    
+    - image: dushberd/moderation-service
+      context: moderation-service
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'dist/*.js'
+            dest: .                  
+    - image: dushberd/query-service
+      context: query
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'dist/*.js'
+            dest: . 

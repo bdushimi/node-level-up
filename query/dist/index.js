@@ -42,7 +42,7 @@ app.post("/events", (req, res) => {
     res.send({ status: "OK" });
 });
 //@ts-ignore
-app.get("/events", (req, res) => {
+app.get("/posts", (req, res) => {
     res.send(posts);
 });
 app.listen(4005, async () => {

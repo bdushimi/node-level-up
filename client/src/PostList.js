@@ -8,7 +8,7 @@ export default function PostList() {
 
   const fetchPosts = async () => {
     const res = await axios
-      .get("http://posts.com:4005/events")
+      .get("http://posts.com/posts")
       .catch((error) => {
         console.log("Error : ", error.message);
       });
