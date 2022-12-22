@@ -16,18 +16,3 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
-
----
-
-apiVersion: v1
-kind: Service
-metadata:
-  name: auth-clusterip-srv
-spec:
-  selector:
-    app: auth
-  ports:
-    - name: auth
-      protocal: TCP
-      port: 3000
-      targetPort: 3000   
