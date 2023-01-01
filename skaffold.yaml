@@ -7,8 +7,11 @@ deploy:
 build:
   local:
     push: false
+  # googleCloudBuild:
+  #   projectId: tickets-dev-372514 
   artifacts:
     - image: dushberd/auth
+    # - image: us.gcr.io/tickets-dev-372514/auth
       context: auth
       docker:
         dockerfile: Dockerfile
