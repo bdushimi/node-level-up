@@ -5,6 +5,7 @@ import jwt from 'jsonwebtoken'
 import { RequestValidationError } from '../errors/RequestValidationError'
 import { User } from '../models/user'
 import { BadRequestError } from '../errors/BadRequestError'
+import { validateRequest } from '../middlewares/validate-request'
 
 const router = express.Router()
 
@@ -18,14 +19,9 @@ router.post('/api/users/signup', [
    .isLength({min: 4, max:20})
    .withMessage('Password must be between 4 and 20 characters') 
 
-], async (req: Request, res: Response)=>{
-
-    const errors = validationResult(req)
-
-    // Check if there are validation errors and send responses back to users
-    if (!errors.isEmpty()){
-        throw new RequestValidationError(errors.array())
-    }
+],
+validateRequest, 
+async (req: Request, res: Response)=>{
 
     const {email, password} = req.body
 
