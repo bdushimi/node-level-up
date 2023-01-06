@@ -1,7 +1,10 @@
 import express, {Request, Response} from 'express'
 import {body, validationResult} from 'express-validator'
+import jwt from 'jsonwebtoken'
+
 import { RequestValidationError } from '../errors/RequestValidationError'
 import { User } from '../models/user'
+import { BadRequestError } from '../errors/BadRequestError'
 
 const router = express.Router()
 
@@ -29,12 +32,23 @@ router.post('/api/users/signup', [
     const existingUser = await User.findOne({email})
 
     if (existingUser){
-        return res.send('Email already used')
+        throw new BadRequestError('Email already taken')
     }
 
     const user = User.build({email, password})
 
      await user.save()
+
+     // Generate jwt
+     const userJwt = jwt.sign({
+        id: user.id,
+        email: user.email
+     }, process.env.jwt_key!)
+
+     //store the jwt on the session
+     req.session = {
+        jwt : userJwt
+     }
 
     res.status(201).send(user)
 

@@ -15,6 +15,13 @@ spec:
       containers:
         - name: auth
           image: dushberd/auth
+          env:
+            - name: jwt_key
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-secret
+                  key: jwt
+
 
 ---
 
