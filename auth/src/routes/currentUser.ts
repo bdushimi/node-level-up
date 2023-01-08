@@ -1,28 +1,16 @@
 import express, {Request, Response} from 'express'
 import jwt from 'jsonwebtoken'
 import { BadRequestError } from '../errors/BadRequestError'
+import { verifyCurrentUser, requireAuth } from '../middlewares/validate-request'
 
 const router = express.Router()
 
-router.get('/api/users/currentuser', (req: Request, res: Response)=>{
+router.get('/api/users/currentuser', verifyCurrentUser, requireAuth, (req: Request, res: Response) => {
 
-    if(!req.session?.jwt){
-        return res.send({
-            currentUser: null
-        })
-    }
+    res.send({
+        currentUser: req.currentUser || null
+    })
 
-    try {
-        const payload = jwt.verify(
-            req.session.jwt, 
-            process.env.jwt_key!
-        )
-
-        res.send({currentUser: payload})
-
-    } catch(err){
-        res.send({currentUser: null})
-    }
 })
 
 export { router as currentUserRouter }
