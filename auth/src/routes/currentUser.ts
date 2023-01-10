@@ -4,7 +4,7 @@ import { verifyCurrentUser, requireAuth } from '../middlewares/validate-request'
 
 const router = express.Router()
 
-router.get('/api/users/currentuser', verifyCurrentUser, requireAuth, (req: Request, res: Response) => {
+router.get('/api/users/currentuser', verifyCurrentUser, (req: Request, res: Response) => {
     res.send({
         currentUser: req.currentUser || null
     })
