@@ -1,16 +1,11 @@
-interface Color {
-    red: number
-    blue: number
-    green: number
-}
+export * from './errors/BadRequestError'
+export * from './errors/CustomError'
+export * from './errors/DatabaseConnectionError'
+export * from './errors/NotAuthorizedError'
+export * from './errors/RequestValidationError'
+export * from './errors/RouteNotFoundError'
 
 
-const color : Color = {
-    red: 10,
-    blue: 10,
-    green: 10
-}
+export * from './middlewares/error-handler'
+export * from './middlewares/validate-request'
 
-console.log(color)
-
-export default color
