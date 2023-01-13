@@ -1,10 +1,8 @@
 import express, {Request, Response, NextFunction} from 'express'
-import {body, validationResult} from 'express-validator'
-import { RequestValidationError } from '../errors/RequestValidationError'
-import { validateRequest } from '../middlewares/validate-request'
+import {body} from 'express-validator'
+import { validateRequest, BadRequestError } from '@dushberd/common'
 import { Password } from '../services/password'
 import { User } from '../models/user'
-import { BadRequestError } from '../errors/BadRequestError'
 import jwt from 'jsonwebtoken'
 
 const router = express.Router()

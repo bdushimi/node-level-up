@@ -1,6 +1,5 @@
 import express, {Request, Response} from 'express'
-import { BadRequestError } from '../errors/BadRequestError'
-import { verifyCurrentUser, requireAuth } from '../middlewares/validate-request'
+import { verifyCurrentUser, requireAuth } from '@dushberd/common'
 
 const router = express.Router()
 
