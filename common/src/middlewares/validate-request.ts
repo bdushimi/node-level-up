@@ -41,15 +41,18 @@ export const verifyCurrentUser = (
     next: NextFunction
 ) => {
     if(!req.session?.jwt){
+        console.log('no req.session.jwt')
         return next()
     }
 
     try {
 
-        const payload = jwt.verify(req.session.jwt, process.env.jwt_key!) as UserPayload
+        const payload = jwt.verify(req.session.jwt, process.env.JWT_KEY!) as UserPayload
+        console.log('payload', payload)
         req.currentUser = payload
         
     } catch(err) {
+        console.log('error', err)
         res.send({
             currentUser: null
         })

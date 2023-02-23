@@ -34,7 +34,7 @@ export default function signin() {
           />
         </div>
         <div className="form-group">
-          <label>Email Address</label>
+          <label>Password</label>
           <input
             type="password"
             className="form-control"

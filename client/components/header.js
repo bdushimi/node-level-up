@@ -19,15 +19,15 @@ export default ({currentUser}) => {
     
 
     return (
-        <nav class="navbar navbar-light bg-light">
+        <nav className="navbar navbar-light bg-light">
             <div className="nav-item">
             <span className='nav-link '>
             <Link href="/">GitTix</Link>
             </span>
             </div>
 
-            <div class="d-flex justify-content-end">
-                <ul class="nav d-flex align-items-center">
+            <div className="d-flex justify-content-end">
+                <ul className="nav d-flex align-items-center">
                     {
                        links
                     }
